@@ -70,5 +70,70 @@ const departments = {
         ],
     }
 }
+// const userName = prompt('Hoi! Hoe heet je?');
+// console.log(userName);
+// console.log(departments);
+// console.log('De afdeling Sales heeft ' + departments.sales.numberOfEmployees + ' medewerkers');
+// console.log('Marketing is een leuke afdeling om te werken. ' + departments.marketing.description + '.');
+// console.log('De afdeling Customer Service heeft ' + departments['customer-service'].numberOfEmployees + ' medewerkers');
 
-console.log(departments);
+const userInput = prompt('Over welke afdeling wil je meer informatie? Kies uit: [marketing / sales / customer-service]');
+let selectedJob = null;
+switch (userInput) {
+    case "marketing":
+    case "sales":
+    case "customer-service":
+        console.log( userInput + " is een leuke afdeling om te werken. Er werken op dit moment " + departments[userInput].numberOfEmployees + " medewerkers.");
+        const userschoice = prompt('Je koos marketing. Over welke functie wil je meer weten? Voer een getal tussen 0 en 3 in.\n'+
+            '0: [' + departments[userInput].jobs[0].title + ']\n' +
+            '1: [' + departments[userInput].jobs[1].title + ']\n' +
+            '2: [' + departments[userInput].jobs[2].title + ']\n' +
+            '3: [' + departments[userInput].jobs[3].title + ']');
+        switch (userschoice) {
+            case "0":
+            case "1":
+            case "2":
+            case "3":
+                selectedJob = departments[userInput].jobs[Number(userschoice)];
+                document.getElementById("role-title").textContent = selectedJob.title;
+                document.getElementById("department-description").textContent = departments[userInput].description;
+                document.getElementById("role-description").textContent = selectedJob.description;
+                break;
+            default:
+                document.getElementById("error-message").textContent = ("Ongeldige keuze, probeer het opnieuw door de pagina te refreshen.");
+        }
+        break;
+    default:
+        document.getElementById("error-message").textContent = ("Ongeldige keuze, probeer het opnieuw door de pagina te refreshen.");
+}
+
+// document.title = userName;
+
+
+
+
+
+
+// const userschoice = prompt('Je koos marketing. Over welke functie wil je meer weten? Voer een getal tussen 0 en 3 in.\n'+
+//                                             '0: [' + departments.marketing.jobs[0].title + ']\n' +
+//                                             '1: [' + departments.marketing.jobs[1].title + ']\n' +
+//                                             '2: [' + departments.marketing.jobs[2].title + ']\n' +
+//                                             '3: [' + departments.marketing.jobs[3].title + ']');
+// switch (userschoice) {
+//     case "0":
+//     console.log("Je koos " + departments.marketing.jobs[0].title + ". Een uitdagende rol! " + departments.marketing.jobs[0].description);
+//         break;
+//     case "1":
+//         console.log("Je koos " + departments.marketing.jobs[1].title + ". Een uitdagende rol! " + departments.marketing.jobs[1].description);
+//         break;
+//     case "2":
+//         console.log("Je koos " + departments.marketing.jobs[2].title + ". Een uitdagende rol! " + departments.marketing.jobs[2].description);
+//         break;
+//     case "3":
+//         console.log("Je koos " + departments.marketing.jobs[3].title + ". Een uitdagende rol! " + departments.marketing.jobs[3].description);
+//         break;
+//     default:
+//         console.error("Ongeldige keuze, probeer het opnieuw door de pagina te refreshen.");
+// }
+
+
